@@ -8,9 +8,15 @@ var svgViewer = {
 		
 		this.hammertime = Hammer(document).on('touch', this.touchHandler);
 	},
-	touchHandler: function(evt) {
-		if (evt.target.ownerSVGElement != svgViewer.liveElement) return;
-		console.log('correct target');
+	touchHandler: function (evt) {
+		if (evt.target.ownerSVGElement == svgViewer.liveElement) {
+			svgViewer.activity('on');
+		}
+	},
+	activity: function (option) {
+		if (option == 'on' || option == 'off') {
+			console.log(option);
+		}
 	},
 	isSVGElement: function (element) {
 		return element.tagName.toLowerCase() == 'svg';
