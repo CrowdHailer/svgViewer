@@ -33,6 +33,9 @@ var svgViewer = {
 	release: function (evt) {
 		svgViewer.activity('off');
 	},
+	getScale: function () {
+		return this.liveElement.getScreenCTM().inverse().a;
+	},
 	isSVGElement: function (element) {
 		return element.tagName.toLowerCase() == 'svg';
 	}
