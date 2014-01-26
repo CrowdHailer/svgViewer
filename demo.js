@@ -1,0 +1,1 @@
+svgViewer.init('svg-element')
