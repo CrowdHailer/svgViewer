@@ -15,8 +15,23 @@ var svgViewer = {
 	},
 	activity: function (option) {
 		if (option == 'on' || option == 'off') {
-			console.log(option);
+			this.hammertime[option]('dragstart', this.dragstart);
+			this.hammertime[option]('drag', this.drag);
+			this.hammertime[option]('release', this.release);
 		}
+	},
+	dragstart: function (evt) {
+		svgViewer.lastTimeStamp = evt.gesture.timeStamp;
+		
+		console.log(svgViewer.lastTimeStamp);
+	},
+	
+	drag: function (evt) {
+		var G = evt.gesture;
+		console.log(G.timeStamp);
+	},
+	release: function (evt) {
+		svgViewer.activity('off');
 	},
 	isSVGElement: function (element) {
 		return element.tagName.toLowerCase() == 'svg';
